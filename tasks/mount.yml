@@ -38,6 +38,11 @@
     mode: 0755
   notify: restart s3fs
 
+- name: Add s3fs to run levels
+  become: yes
+  command: "rc-update add s3fs default"
+  changed_when: False
+
 - name: Make sure mountpoints are present in fstab
   become: yes
   mount:
